@@ -1,29 +1,36 @@
-# Overview
-This is a minimal Flask web application that serves "Hello World!" at the root (/) endpoint.
+# Hello World! Flask App
 
-# Setup
-1. Prerequisites:
-   - Python 3.8+ installed
-   - pip installed
+## Overview
+A minimal Flask web app that serves a single route (/) which displays “Hello World!” in a simple HTML page. This project is packaged as a single-file app for easy running and portability.
 
-2. Create and activate a virtual environment (recommended):
-   - macOS/Linux:
-     - python3 -m venv .venv
-     - source .venv/bin/activate
-   - Windows (PowerShell):
-     - python -m venv .venv
-     - .\.venv\Scripts\Activate.ps1
+## Setup
+- Requirements:
+  - Python 3.8+ recommended
+  - pip
 
-3. Install dependencies:
-   - pip install flask
+- Install dependencies:
+  - Option A: User environment
+    - pip install flask
+  - Option B: Virtual environment (recommended)
+    - python -m venv .venv
+    - On Windows: .venv\Scripts\activate
+      On macOS/Linux: source .venv/bin/activate
+    - pip install flask
 
-4. Run the app:
+## Usage
+1. Start the server:
    - python index.html
+   - Optional: choose a port
+     - On macOS/Linux: PORT=8000 python index.html
+     - On Windows (Powershell): $env:PORT=8000; python index.html
 
-The file is named index.html per the required output format, but it contains Python code and can be run directly with Python.
+2. Open your browser:
+   - http://127.0.0.1:5000/ (or the port you set)
 
-# Usage
-- After starting the server, open your browser and navigate to:
-  - http://127.0.0.1:5000/
-- You should see:
-  - Hello World!
+You should see a page showing: Hello World!
+
+## Improvements in Round 2
+- Consolidated into a single-file app (index.html) for zero-config startup.
+- Added responsive, minimal CSS for a cleaner “Hello World!” display.
+- Allowed port override via PORT environment variable for easier deployment.
+- Clarified setup/usage steps for a faster run experience.
