@@ -1,11 +1,45 @@
-from flask import Flask
+#!/usr/bin/env python3
+# index.html - single-file Flask app that serves "Hello World!"
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "Hello World!"
+HTML = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Hello World!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { color-scheme: light dark; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: canvas;
+      color: canvastext;
+    }
+    .hello {
+      font-size: clamp(28px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="hello">Hello World!</div>
+</body>
+</html>
+"""
+
+@app.get("/")
+def root():
+    # Returns an HTML page that displays "Hello World!"
+    return render_template_string(HTML)
 
 if __name__ == "__main__":
     import os
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    port = int(os.environ.get("PORT", "5000"))
+    app.run(host="0.0.0.0", port=port)
